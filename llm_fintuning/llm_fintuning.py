@@ -152,7 +152,7 @@ if load_model:
 
     manager.get_model(
         model_name= model_reg,  # or any valid model ID
-        local_dest="."
+        local_dest=".")
 
 
 url = get_dataset_download_urls(
