@@ -116,30 +116,39 @@ manager = MLOpsManager(
     clearml_username=data_model_reg_cfg['clearml_username']
 )
 # =============== training config ========
+# place holders
+model_id = "model_id"
+
 cfg = {
-    "task": "llm_finetuning",
-    "model_path": "Qwen/Qwen2-0.5B",  # or any HuggingFace model
-    "system_prompt": "You are a medical assistant. Answer accurately and clearly.",
+    "task": "llm_finetuning",#√
+    "model_name": "Qwen/Qwen2-0.5B",  # √
+    "system_prompt": "system_prompts", #√
+    "epochs": 10, #√
+    "batch_size": 32,#√
+    "lr": 0.01,#√
+    
+    # defaults 
     "output_dir": "./chekpoints/medical_qa_finetune",
-    "epochs": 0.1,
-    "batch_size": 4,
-    "learning_rate": 2e-4,
     "eval_steps": 50,
     "max_seq_length": 1024,
 
     # Model save
-    "save_model": save_model,
+    "save_model": "save_model",
     "model_dir": "model/",
 
-    "load_model": load_model,  
+    "load_model": "load_model",  
     "model_dir": f"./{model_id}/",
     
     "dataset_config": {
-        "source": dataset_path,
+        "source": "dataset_path",
+    }
+    "model_config":{
+        "model_reg": 'reg'
     }
 }
 
 task.connect(cfg)
+print(cfg)
 
 model_reg = cfg["model_config"]["model_reg"]
 
@@ -178,7 +187,7 @@ url = get_dataset_download_urls(
 # save_path = "./chekpoints/medical_qa_model"
 # trainer.model.save(save_path)  # Use trainer.model instead
 # print(f"Model saved to {save_path}")
-
+print(cfg)
 
 trainer = AutoTrainer(config=cfg)
 
