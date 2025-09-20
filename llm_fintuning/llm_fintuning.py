@@ -63,7 +63,7 @@ def get_dataset_download_urls(
     download_urls = [
         file["download_url"]
         for file in data.get("download_info", {}).get("files", [])
-        if file["filename"].endswith(".tar.gz") or file["filename"].endswith(".csv")
+        if file["filename"].endswith(".tar.gz") or file["filename"].endswith(".csv") or file["filename"].endswith('.zip')
     ]
     return download_urls[0]
 
