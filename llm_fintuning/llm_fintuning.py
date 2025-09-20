@@ -173,12 +173,13 @@ url = get_dataset_download_urls(
     s3_endpoint_url=data_model_reg_cfg['CEPH_ENDPOINT'],
 )
 
+zip_path = "medical_qa.zip"
+
 r = requests.get(url, stream=True)
 with open(zip_path, "wb") as f:
     for chunk in r.iter_content(chunk_size=8192):
         f.write(chunk)
 
-zip_path = "medical_qa.zip"
 extract_dir = "./datasets/medical_qa"
 os.makedirs(extract_dir, exist_ok=True)
 
