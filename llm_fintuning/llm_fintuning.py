@@ -197,9 +197,10 @@ print("after data layer")
 # trainer.model.save(save_path)  # Use trainer.model instead
 # print(f"Model saved to {save_path}")
 
-# trainer = AutoTrainer(config=cfg)
-
-# trainer.run()
+trainer = AutoTrainer(config=cfg)
+print('after config')
+trainer.run()
+print('after run')
 
 if save_model:
     local_model_id = manager.add_model(
