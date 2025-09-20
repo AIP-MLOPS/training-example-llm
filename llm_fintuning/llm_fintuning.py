@@ -145,6 +145,15 @@ cfg = {
 print('before')
 print(cfg)
 task.connect(cfg)
+
+if cfg.get("epochs") is not None:
+    try:
+        # try int first
+        cfg["epochs"] = int(cfg["epochs"])
+    except ValueError:
+        # if it fails, fallback to float
+        cfg["epochs"] = float(cfg["epochs"])
+
 print('after')
 print(cfg)
 
