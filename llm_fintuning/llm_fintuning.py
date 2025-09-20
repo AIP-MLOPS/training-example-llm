@@ -141,8 +141,10 @@ cfg = {
         "model_reg": 'reg'
     }
 }
-
+print('before')
+print(cfg)
 task.connect(cfg)
+print('after')
 print(cfg)
 
 model_reg = cfg["model_config"]["model_reg"]
