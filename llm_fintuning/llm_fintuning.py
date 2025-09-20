@@ -118,7 +118,7 @@ cfg = {
     "task": "llm_finetuning",
     "model_name": "huggingface name",  
     "system_prompt": "system_prompts", 
-    "epochs": 10, 
+    "epochs": None, 
     "batch_size": 32,
     "lr": 0.01,
     
