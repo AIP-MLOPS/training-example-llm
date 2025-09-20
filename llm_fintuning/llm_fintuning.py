@@ -111,6 +111,8 @@ manager = MLOpsManager(
 # =============== training config ========
 # place holders
 model_id = "model_id"
+save_model = False
+load_model = False
 
 cfg = {
     "task": "llm_finetuning",#√
