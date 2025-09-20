@@ -99,15 +99,8 @@ os.environ['CEPH_SECRET_KEY'] = data_model_reg_cfg['CEPH_SECRET_KEY']
 os.environ['CEPH_BUCKET'] = data_model_reg_cfg['CEPH_BUCKET']
 
 
-zip_path = "medical_qa.zip"
-extract_dir = "./datasets/medical_qa"
-os.makedirs(extract_dir, exist_ok=True)
 
-with zipfile.ZipFile(zip_path, "r") as zip_ref:
-    zip_ref.extractall(extract_dir)
 
-# Assume dataset is JSON file inside zip
-dataset_path = os.path.join(extract_dir, "medical_qa.json")
 # --------- fetch model from model registry --------
 manager = MLOpsManager(
     clearml_url=data_model_reg_cfg['clearml_url'],
@@ -175,7 +168,16 @@ url = get_dataset_download_urls(
     s3_endpoint_url=data_model_reg_cfg['CEPH_ENDPOINT']
 )
 
-# cfg["dataset_config"]["source"] = url
+zip_path = "medical_qa.zip"
+extract_dir = "./datasets/medical_qa"
+os.makedirs(extract_dir, exist_ok=True)
+
+with zipfile.ZipFile(zip_path, "r") as zip_ref:
+    zip_ref.extractall(extract_dir)
+
+cfg["dataset_config"]["source"] = f"{extract_dir}/medical_qa.json"
+print("after data layer")
+
 
 
 
@@ -184,9 +186,9 @@ url = get_dataset_download_urls(
 # trainer.model.save(save_path)  # Use trainer.model instead
 # print(f"Model saved to {save_path}")
 
-trainer = AutoTrainer(config=cfg)
+# trainer = AutoTrainer(config=cfg)
 
-trainer.run()
+# trainer.run()
 
 if save_model:
     local_model_id = manager.add_model(
