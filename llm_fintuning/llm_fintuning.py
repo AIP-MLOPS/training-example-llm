@@ -170,8 +170,13 @@ url = get_dataset_download_urls(
     clearml_secret_key=data_model_reg_cfg['clearml_secret_key'],
     s3_access_key=data_model_reg_cfg['CEPH_ACCESS_KEY'],
     s3_secret_key=data_model_reg_cfg['CEPH_SECRET_KEY'],
-    s3_endpoint_url=data_model_reg_cfg['CEPH_ENDPOINT']
+    s3_endpoint_url=data_model_reg_cfg['CEPH_ENDPOINT'],
 )
+
+r = requests.get(url, stream=True)
+with open(zip_path, "wb") as f:
+    for chunk in r.iter_content(chunk_size=8192):
+        f.write(chunk)
 
 zip_path = "medical_qa.zip"
 extract_dir = "./datasets/medical_qa"
