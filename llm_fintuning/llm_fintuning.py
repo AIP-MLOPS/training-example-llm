@@ -5,15 +5,15 @@ import requests
 import json
 from dotenv import load_dotenv
 
-import torch
-import torch.nn as nn
-import torchvision.models as models
-from torch.nn import functional as F
+# import torch
+# import torch.nn as nn
+# import torchvision.models as models
+# from torch.nn import functional as F
+
 from clearml import Task
 
-from ml_trainer import AutoTrainer
+# from ml_trainer import AutoTrainer
 from aipmodel.model_registry import MLOpsManager
-
 
 def get_dataset_download_urls(
     url: str,
@@ -162,10 +162,6 @@ if load_model:
         local_dest="."
 
 
-trainer = AutoTrainer(config=cfg)
-# ==== 4. Run training ====
-trainer.run()
-
 url = get_dataset_download_urls(
     # url="https://api.mlops.ai-lab.ir/data/download-dataset",
     url="http://data-ingestion-api-service.aip-mlops-service.svc.cluster.local:8169/download-dataset",
@@ -187,7 +183,6 @@ url = get_dataset_download_urls(
 # save_path = "./chekpoints/medical_qa_model"
 # trainer.model.save(save_path)  # Use trainer.model instead
 # print(f"Model saved to {save_path}")
-print(cfg)
 
 trainer = AutoTrainer(config=cfg)
 
