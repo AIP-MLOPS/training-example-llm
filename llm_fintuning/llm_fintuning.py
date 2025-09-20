@@ -5,14 +5,14 @@ import requests
 import json
 from dotenv import load_dotenv
 
-# import torch
-# import torch.nn as nn
-# import torchvision.models as models
-# from torch.nn import functional as F
+import torch
+import torch.nn as nn
+import torchvision.models as models
+from torch.nn import functional as F
 
 from clearml import Task
 
-# from ml_trainer import AutoTrainer
+from ml_trainer import AutoTrainer
 from aipmodel.model_registry import MLOpsManager
 
 def get_dataset_download_urls(
