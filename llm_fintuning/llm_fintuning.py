@@ -134,7 +134,7 @@ cfg = {
     
     "dataset_config": {
         "source": "dataset_path",
-    }
+    },
     "model_config":{
         "model_reg": 'reg'
     }
