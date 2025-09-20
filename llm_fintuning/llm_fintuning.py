@@ -150,9 +150,11 @@ if cfg.get("epochs") is not None:
     try:
         # try int first
         cfg["epochs"] = int(cfg["epochs"])
+        print('try')
     except ValueError:
         # if it fails, fallback to float
         cfg["epochs"] = float(cfg["epochs"])
+        print('except')
 
 print('after')
 print(cfg)
