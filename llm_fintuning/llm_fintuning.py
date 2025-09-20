@@ -115,12 +115,12 @@ save_model = False
 load_model = False
 
 cfg = {
-    "task": "llm_finetuning",#√
-    "model_name": "huggingface name",  # √
-    "system_prompt": "system_prompts", #√
-    "epochs": 10, #√
-    "batch_size": 32,#√
-    "lr": 0.01,#√
+    "task": "llm_finetuning",
+    "model_name": "huggingface name",  
+    "system_prompt": "system_prompts", 
+    "epochs": 10, 
+    "batch_size": 32,
+    "lr": 0.01,
     
     # defaults 
     "output_dir": "./chekpoints/medical_qa_finetune",
@@ -135,8 +135,8 @@ cfg = {
     "model_dir": f"./{model_id}/",
     
     "dataset_config": {
-        "source": "dataset_path",
-        "name":"dataset name"
+        "name":"dataset name",
+        "source": "dataset_path"
     },
     "model_config":{
         "model_reg": 'reg'
